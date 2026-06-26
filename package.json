@@ -1,0 +1,16 @@
+{
+  "name": "agent-reach-gui",
+  "version": "1.0.0",
+  "description": "Local Web UI and Makefile command surface for Agent Reach.",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "serve": "node server.js",
+    "check": "node scripts/check.js",
+    "package": "node scripts/package.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
