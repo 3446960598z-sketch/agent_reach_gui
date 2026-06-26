@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Agent Reach 互联网调研能力的本地 Web 图形界面。">
+    <title>Agent Reach 控制台</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Agent Reach 控制台首页"><span class="brand-mark">AR</span><span>Agent Reach 控制台</span></a>
+      <nav class="nav" aria-label="主导航"><a href="#capabilities">能力</a><a href="#runner">运行器</a><a href="#cli">命令入口</a></nav>
+      <button class="ghost-button" id="doctorButton" type="button">运行诊断</button>
+    </header>
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">本地控制界面</p>
+          <h1>一个界面覆盖所有 Agent Reach 路由。</h1>
+          <p class="lede">搜索、社交平台、GitHub、网页读取、视频字幕、招聘检索、环境诊断和更新检查，全部通过同一层可审计命令模板执行。</p>
+          <div class="hero-actions"><a class="primary-button" href="#runner">打开运行器</a><button class="secondary-button" id="copyMakeHelp" type="button">复制 make help</button></div>
+        </div>
+        <aside class="command-lens" aria-label="命令预览">
+          <div class="lens-header"><span>生成的命令</span><span class="status-dot">就绪</span></div>
+          <pre id="heroCommand">make doctor</pre>
+          <div class="signal-grid"><span>搜索</span><span>社交</span><span>视频</span><span>开发</span></div>
+        </aside>
+      </section>
+      <section class="capability-band" id="capabilities">
+        <div class="section-heading"><p class="eyebrow">能力覆盖</p><h2>从 skill reference 映射到图形界面。</h2><p>每个能力卡片都绑定固定命令模板，不执行任意 shell 文本。</p></div>
+        <div class="interpretation-grid" aria-label="Skill 能力解读"><div><strong>先选路由</strong><span>访问需要登录态的平台前，会先判断当前可用后端。</span></div><div><strong>面向读取</strong><span>主要用于调研、检索、转录和诊断，不用于账号写操作。</span></div><div><strong>多后端</strong><span>OpenCLI、MCP、公开 API 和平台 CLI 都作为独立可见路由暴露。</span></div></div>
+        <div class="filters" id="filters" aria-label="能力筛选"></div><div class="capability-grid" id="capabilityGrid"></div>
+      </section>
+      <section class="runner-band" id="runner"><div class="runner-panel"><div class="runner-form"><p class="eyebrow">运行器</p><h2 id="runnerTitle">选择一个能力。</h2><p id="runnerSummary">选择上方能力卡片，填写必要字段，然后在本地运行或复制命令。</p><form id="commandForm"><div id="fields"></div><div class="runner-actions"><button class="primary-button" type="submit">运行命令</button><button class="secondary-button" id="copyCommand" type="button">复制命令</button></div></form></div><div class="terminal" aria-live="polite"><div class="terminal-top"><span>输出</span><button class="text-button" id="clearOutput" type="button">清空</button></div><pre id="output">尚未运行命令。</pre></div></div></section>
+      <section class="cli-band" id="cli"><div><p class="eyebrow">隐藏 CLI 入口</p><h2>按 Ctrl+K 打开命令面板。</h2><p>命令面板提供与 Makefile 兼容的终端命令。默认隐藏，需要时再打开。</p></div><div class="makefile-strip"><code>make search QUERY="agent reach"</code><code>make youtube URL="https://youtube.com/watch?v=VIDEO_ID"</code><code>make package</code></div></section>
+    </main>
+    <dialog class="palette" id="palette"><form method="dialog"><div class="palette-top"><strong>Makefile 命令入口</strong><button class="text-button" value="close">关闭</button></div><input id="paletteSearch" type="search" placeholder="筛选命令" autocomplete="off"><div id="paletteList" class="palette-list"></div></form></dialog>
+    <script src="/app.js"></script>
+  </body>
+</html>
